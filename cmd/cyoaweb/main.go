@@ -5,10 +5,12 @@ import (
 	"flag"
 	"fmt"
 	"os"
+
+	cyoa "github.com/rajshrimohanks/gophercises-cyoa"
 )
 
 func main() {
-	filename := flag.String("file", "gopher.json", "the JSON file with CYOA story")
+	filename := flag.String("file", "res/gopher.json", "the JSON file with CYOA story")
 	flag.Parse()
 	fmt.Printf("Using the story in %s.\n", *filename)
 
@@ -22,4 +24,6 @@ func main() {
 	if err := d.Decode(&story); err != nil {
 		panic(err)
 	}
+
+	fmt.Printf("%+v\n", story)
 }
