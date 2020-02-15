@@ -82,7 +82,9 @@ type HandlerOption func(h *handler)
 
 func WithTemplate(t *template.Template) HandlerOption {
 	return func(h *handler) {
-		h.t = t
+		if t != nil {
+			h.t = t
+		}
 	}
 }
 
