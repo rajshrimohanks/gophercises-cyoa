@@ -88,6 +88,12 @@ func WithTemplate(t *template.Template) HandlerOption {
 	}
 }
 
+func WithPathFunc(fn func(r *http.Request) string) HandlerOption {
+	return func(h *handler) {
+		h.pathFn = fn
+	}
+}
+
 func NewHandler(s Story, opts ...HandlerOption) http.Handler {
 	h := handler{s, tpl, defaultPathFn}
 
